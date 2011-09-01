@@ -1,7 +1,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
    @Project: PA55WORD - A simple password generator bookmarklet 
 	 @File: bookmarklet.js
-	 @Version: 0.1
+	 @Version: 0.2
    
 	 Created by Jason Howmans (jasonhowmans.com) 2011.
 	 This software is open source, you can use it and improve it as you wish.
@@ -27,13 +27,28 @@ if (typeof jQuery == 'undefined') {
 /* Everything happens through this function
    -------------------------------------- */
 function bookmarklet() {
-	var bodywidth = $('body').width();
-	var modelwidth = 300;
-	$('body').append('<div id="pa55word" style="background: black; display: none; font: 14px monospace; height: auto; padding: 30px 0; position: absolute; right: '+((bodywidth/2)-(modelwidth/2))+'px; top: 0px; width: '+modelwidth+'px; z-index: 9999;"><input id="p55Code" style="background: transparent; border: none; color: white; font-size: 18px; outline: none; padding: 0; text-align: center; width: 100%;" value="Generated Password"></div>');
+	// Append UI to body
+	$('body').append('<div id="pa55word" style="background: black; background: rgba(0,0,0,0.8); display: none; height: auto; left: 0px; padding: 10px 0; position: absolute; top: 0px; width: 100%; z-index: 9999;"><input id="p55Code" style="background: transparent; border: none; color: white; font: 18px monospace; outline: none; padding: 0; text-align: center; width: 100%;" value="Generated Password"></div>');
 	$('#pa55word').slideDown(200);
+	$('#pa55word').append('<a href="#" id="pa55wordClose" style="color: white; display: block; font: 20px monospace; opacity: 0.4; padding: 10px 20px; position: absolute; right: 0; text-decoration: none; top: 0;">x</a>');
+	
+	// Generate password and select it
 	$('#pa55word input#p55Code').val(generatePassword(8));
 	$('#pa55word input#p55Code').focus();
 	$('#pa55word input#p55Code').select();
+	
+	// Close button effects
+	$('#pa55word a#pa55wordClose').hover(function() { $(this).css('opacity', '1'); }, function() { $(this).css('opacity', '0.4'); });
+	
+	// Close and remove from DOM without a trace
+	$('#pa55word a#pa55wordClose').click(function() { 
+		$('#pa55word').slideUp(100).remove(); 
+		P55didFinishLoading = undefined; 
+		p55n = undefined;
+		$('script#p55n').remove(); 
+	});
+	
+	return false;
 }
 
 /* Password Generate Algorithm
@@ -49,4 +64,4 @@ function generatePassword(passLength) {
 }
 
 // Finish everything off
-var didFinishLoading = true;
+var P55didFinishLoading = true;

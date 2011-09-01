@@ -1,5 +1,4 @@
 #PA55WORD – Password Generator Bookmarklet#
-
 A quick bookmarklet for generating random passwords on the fly. Created for those moments when you need a simple and secure password, but don't want to go hunting around the web for a generator. This baby does it all in one click.
 
 ##Demo##
