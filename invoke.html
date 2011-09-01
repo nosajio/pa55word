@@ -3,8 +3,27 @@
 <head>
 	<meta charset="utf-8">
 	<title>Pa55word Bookmarklet</title>
+	
+	<style type="text/css" media="screen">
+		body {
+			background: #555;
+			color: white;
+			font-family: sans-serif;
+			margin: 20px;
+		}
+		
+		a.invoker {
+			border: 1px solid #111;
+			color: #bada55;
+			padding: 8px;
+		}
+	</style>
 </head>
 <body>
-	<a name="Pa55word Test" href="javascript:(function(){if(typeof done=='undefined'){document.body.appendChild(document.createElement('script')).src='http://experiments.staging.lan/pa55word/bookmarklet.js';}})();">Run</a>
+	
+	<h1>PA55WORD</h1>
+	
+	<a class="invoker" name="Pa55word Test" href="javascript:(function(){if(typeof didFinishLoading=='undefined'){document.body.appendChild(document.createElement('script')).src='http://experiments.staging.lan/pa55word/bookmarklet.min.js';}})();">Run</a>
+
 </body>
 </html>
