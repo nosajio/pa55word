@@ -1,6 +1,2 @@
-
-._README.markdown
-
-._.gitignore
-
-._bookmarklet.js
+._*
+.DS_Store
